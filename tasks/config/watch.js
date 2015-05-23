@@ -27,6 +27,13 @@ module.exports = function(grunt) {
 
 			// When assets are changed:
 			tasks: ['syncAssets' , 'linkAssets']
+		},
+		jshint:{
+			// Assets to watch:
+			files: ['assets/**/*.js'],
+
+			// When assets are changed:
+			tasks: ['jshint']
 		}
 	});
 

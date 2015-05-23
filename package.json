@@ -27,7 +27,7 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "test":"mocha test/bootstrap.test.js test/controllers/*.js"
+    "test": "mocha test/bootstrap.test.js test/controllers/*.js"
   },
   "main": "app.js",
   "repository": {
@@ -38,6 +38,8 @@
   "license": "",
   "devDependencies": {
     "chai": "^2.3.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "jshint-stylish": "^2.0.0",
     "karma": "^0.12.32",
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
