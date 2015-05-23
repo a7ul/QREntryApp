@@ -34,7 +34,13 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  
+  'GET /user' : 'UserController.findUser',
+  
+  'POST /user/new' : 'UserController.newUser',
+  
+  'POST /user/update' : 'UserController.updateUser'
 
   /***************************************************************************
   *                                                                          *

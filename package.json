@@ -21,11 +21,13 @@
     "include-all": "~0.1.3",
     "rc": "~0.5.0",
     "sails": "~0.11.0",
-    "sails-disk": "~0.10.0"
+    "sails-disk": "~0.10.0",
+    "sails-mongo": "^0.11.2"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test":"mocha test/bootstrap.test.js test/controllers/*.js"
   },
   "main": "app.js",
   "repository": {
@@ -33,5 +35,13 @@
     "url": "git://github.com/sohamchetan/QRBackend.git"
   },
   "author": "sohamchetan",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "karma": "^0.12.32",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.5",
+    "supertest": "^1.0.1"
+  }
 }
