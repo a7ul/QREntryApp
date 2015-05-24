@@ -15,11 +15,16 @@ in assets folder:
 <code>bower install </code>
 
 to run app :
+------------
 
 in root folder :
 
 <code>grunt</code>
 <code>sails lift</code>
+
+Run mongo :
+
+<code>mongod --dbpath some_path_to_db_folder</code>
 
 in assets folder :
 
