@@ -10,6 +10,28 @@
 angular.module('assetsApp')
   .controller('MainCtrl', function ($scope, $http) {
 
+    var socket = io();
+
+    var handleNewUserSocket = function (data) {
+      console.log(data);
+      $scope.users.push(data);
+      $scope.$digest();
+    };
+
+    var handleUpdateUserSocket = function(data){
+      console.log(data);
+      var userIndex = _.findIndex($scope.users, {name:data.name});
+      $scope.users[userIndex] = data;
+      $scope.$digest();
+    };
+
+    var handleError = function (data, status) {
+      console.log(data, status);
+    };
+
+    socket.on('newUserCreated', handleNewUserSocket);
+    socket.on('userUpdated', handleUpdateUserSocket);
+
     $scope.temp = 'testing';
 
     $scope.users = [];
@@ -17,30 +39,18 @@ angular.module('assetsApp')
     $scope.submitNewUser = function () {
       console.log('posting');
       $http.post('/user/new', {name: $scope.newUserName}).
-        success(function (data, status, headers, config) {
-          // this callback will be called asynchronously
-          // when the response is available
+        success(function (data) {
           console.log(data);
         }).
-        error(function (data, status, headers, config) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-          console.log(data, status);
-        });
+        error(handleError);
     };
 
-    $scope.getUsers = function(){
-      $http.get('/user').
-        success(function (data, status, headers, config) {
-          // this callback will be called asynchronously
-          // when the response is available
-          console.log(data);
-          $scope.users = data;
-        }).
-        error(function (data, status, headers, config) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-          console.log(data, status);
-        });
-    };
+    //$scope.getUsers = function(){
+    $http.get('/user').
+      success(function (data) {
+        console.log(data);
+        $scope.users = data;
+      }).
+      error(handleError);
+    //};
   });

@@ -1,6 +1,20 @@
 <span>Enter new user name</span><input type="text" ng-model="newUserName"><button ng-click="submitNewUser()">Submit</button>
 <div>{{temp}}</div>
 <button ng-click="getUsers()">Get Users</button>
-<ul>
-  <li ng-repeat="user in users">{{user.name}}</li>
-</ul>
+<!--<ul>-->
+  <!--<li ng-repeat="user in users">{{user.name}} : {{user.attended}}</li>-->
+<!--</ul>-->
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Attended</th>
+  </tr>
+  <tr ng-repeat="user in users">
+    <td>{{user.userId}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.attended}}</td>
+  </tr>
+</table>

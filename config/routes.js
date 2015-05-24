@@ -40,7 +40,9 @@ module.exports.routes = {
   
   'POST /user/new' : 'UserController.newUser',
   
-  'POST /user/update' : 'UserController.updateUser'
+  'POST /user/update' : 'UserController.updateUser',
+  
+  'POST /user/attended' : 'UserController.userAttended'
 
   /***************************************************************************
   *                                                                          *

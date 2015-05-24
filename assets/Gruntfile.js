@@ -332,7 +332,7 @@ module.exports = function (grunt) {
     // Copies remaining files to places other tasks can use
     copy: {
       serve: {
-        
+
           expand: true,
           dot: true,
         files: [{
@@ -407,8 +407,9 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'jshint:all',
       'clean:server',
-      'wiredep',
+      'wiredep:app',
       'concurrent:server',
       'autoprefixer:server',
     //      'connect:livereload',
