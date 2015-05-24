@@ -17,6 +17,9 @@ module.exports = {
 
 	newUser: function (req, res) {
 		var userName = req.body.name;
+		if(userName === undefined || userName === ''){
+			return res.end('Please enter valid user');
+		}
 		var handleUserCreation = function (err, createdUser) {
 			if (err) {
 				return res.negotiate(err)
