@@ -15,14 +15,14 @@ angular.module('assetsApp')
     var handleNewUserSocket = function (data) {
       console.log(data);
       $scope.users.push(data);
-      $scope.$digest();
+      refresh();
     };
 
     var handleUpdateUserSocket = function(data){
       console.log(data);
       var userIndex = _.findIndex($scope.users, {name:data.name});
       $scope.users[userIndex] = data;
-      $scope.$digest();
+      refresh();
     };
 
     var handleError = function (data, status) {
@@ -32,7 +32,7 @@ angular.module('assetsApp')
     socket.on('newUserCreated', handleNewUserSocket);
     socket.on('userUpdated', handleUpdateUserSocket);
 
-    $scope.temp = 'testing';
+    $scope.attendanceStatistics = {};
 
     $scope.users = [];
     
@@ -48,12 +48,36 @@ angular.module('assetsApp')
         }).
         error(handleError);
     };
+    
+    var getAttendanceStatistics = function(){
+      console.log('getting total attended');
+      var total = 0 ;
+      var attended = 0;
+      var findTotal = function(item){
+        if(item.attended.toLowerCase() === 'yes'){
+          attended += 1;
+        }
+        total += 1;
+      }
+      _.each($scope.users, findTotal);
+      return {
+        total : total,
+        attended : attended,
+        notAttended : total - attended
+      };
+    };
+    
+    var refresh = function(){
+      $scope.attendanceStatistics = getAttendanceStatistics();
+      $scope.$digest();
+    }
 
     //$scope.getUsers = function(){
     $http.get('/user').
       success(function (data) {
         console.log(data);
         $scope.users = data;
+        refresh();
       }).
       error(handleError);
     //};

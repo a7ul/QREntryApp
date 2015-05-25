@@ -50,6 +50,7 @@ module.exports = {
 	},
 
 	userAttended: function(req, res) {
+		console.log('request attended');
 		var socket = req.socket;
 		var io = sails.io;
 		var userId = req.body.userId;
@@ -57,7 +58,8 @@ module.exports = {
 		var handleUpdate = function (err, updated) {
 			if (err) return res.negotiate(err);
 			io.sockets.emit('userUpdated', updated[0]);
-			return res.json(updated[0]);
+//			return res.json(updated[0]);
+			return res.end('Welcome ' + updated[0].name);
 		};
 		User.update({ userId:userId }, { attended: 'Yes' }, handleUpdate);
 	},
