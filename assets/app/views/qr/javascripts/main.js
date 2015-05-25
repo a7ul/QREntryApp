@@ -10,6 +10,8 @@ $(document).ready(function(){
       $('#read_error').html(error);
     }, function(videoError){
       $('#vid_error').html(videoError);
+
+
     }
   );
 });
