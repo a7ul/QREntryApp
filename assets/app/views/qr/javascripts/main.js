@@ -3,6 +3,7 @@ $(document).ready(function(){
       $.post( "http://localhost:1337/user/attended", {userId:data},function( data ) {
         alert(data);
         $('#read').html(data);
+
       });
     },
     function(error){
