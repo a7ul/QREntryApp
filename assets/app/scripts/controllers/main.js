@@ -35,7 +35,7 @@ angular.module('assetsApp')
     $scope.attendanceStatistics = {};
 
     $scope.users = [];
-    
+
     $scope.attendedClass = function(attended){
       return 'attended-' + attended.toLowerCase();
     };
@@ -48,7 +48,7 @@ angular.module('assetsApp')
         }).
         error(handleError);
     };
-    
+
     var getAttendanceStatistics = function(){
       console.log('getting total attended');
       var total = 0 ;
@@ -58,7 +58,7 @@ angular.module('assetsApp')
           attended += 1;
         }
         total += 1;
-      }
+      };
       _.each($scope.users, findTotal);
       return {
         total : total,
@@ -66,11 +66,11 @@ angular.module('assetsApp')
         notAttended : total - attended
       };
     };
-    
+
     var refresh = function(){
       $scope.attendanceStatistics = getAttendanceStatistics();
       $scope.$digest();
-    }
+    };
 
     //$scope.getUsers = function(){
     $http.get('/user').
