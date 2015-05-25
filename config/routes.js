@@ -42,7 +42,9 @@ module.exports.routes = {
   
   'POST /user/update' : 'UserController.updateUser',
   
-  'POST /user/attended' : 'UserController.userAttended'
+  'POST /user/attended' : 'UserController.userAttended',
+
+  'POST /user/not-attended' : 'UserController.userNotAttended',
 
   /***************************************************************************
   *                                                                          *

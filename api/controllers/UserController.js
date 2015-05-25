@@ -60,6 +60,19 @@ module.exports = {
 			return res.json(updated[0]);
 		};
 		User.update({ userId:userId }, { attended: 'Yes' }, handleUpdate);
+	},
+	
+	userNotAttended: function(req, res) {
+		var socket = req.socket;
+		var io = sails.io;
+		var userId = req.body.userId;
+		userId = parseInt(userId);
+		var handleUpdate = function (err, updated) {
+			if (err) return res.negotiate(err);
+			io.sockets.emit('userUpdated', updated[0]);
+			return res.json(updated[0]);
+		};
+		User.update({ userId:userId }, { attended: 'No' }, handleUpdate);
 	}
 
 };

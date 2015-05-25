@@ -81,3 +81,15 @@ body {
     border-bottom: 0;
   }
 }
+
+.attended-yes{
+  font-weight: bold;
+  background-color: green;
+  text-align: center;
+  color: white;
+}
+
+.attended-no{
+  color: #aa0000;
+  text-align: center;
+}

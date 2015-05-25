@@ -35,6 +35,10 @@ angular.module('assetsApp')
     $scope.temp = 'testing';
 
     $scope.users = [];
+    
+    $scope.attendedClass = function(attended){
+      return 'attended-' + attended.toLowerCase();
+    };
 
     $scope.submitNewUser = function () {
       console.log('posting');
