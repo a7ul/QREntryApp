@@ -1,20 +1,20 @@
 var Sails = require('sails'),
   sails;
-  
+
 var expect = require('chai').expect;
 
-before(function(done) {
+before(function (done) {
   Sails.lift({
     // configuration for testing purposes
-  }, function(err, server) {
-    sails = server;
-    if (err) return done(err);
-    // here you can load fixtures, etc.
-    done(err, sails);
-  });
+  }, function (err, server) {
+      sails = server;
+      if (err) return done(err);
+      // here you can load fixtures, etc.
+      done(err, sails);
+    });
 });
 
-after(function(done) {
+after(function (done) {
   // here you can clear fixtures, etc.
   sails.lower(done);
 });

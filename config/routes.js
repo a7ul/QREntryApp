@@ -38,9 +38,9 @@ module.exports.routes = {
   
   'GET /user' : 'UserController.findUser',
   
-  'POST /user/new' : 'UserController.newUser',
+//  'POST /user/new' : 'UserController.newUser',
   
-  'POST /user/update' : 'UserController.updateUser',
+//  'POST /user/update' : 'UserController.updateUser',
   
   'POST /user/attended' : 'UserController.userAttended',
 
