@@ -26,8 +26,8 @@ module.exports = (function () {
       };
 
       if (globals.attended.toLowerCase() === 'no') return {
-        action: 'json',
-        data: updated
+        action: 'end',
+        data: updated.name + ' removed'
       };
     };
 
@@ -60,7 +60,10 @@ module.exports = (function () {
       getAttendanceAction : getAttendanceAction,
       handleUpdate : handleUpdate,
       handleFind : handleFind,
-      updateUser : updateUser
+      updateUser : updateUser,
+      emitEvent : emitEvent,
+      globals : globals,
+      globalCallback : globals.callback
     };
     //--endtest-- should be deleted during production
   };
